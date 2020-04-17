@@ -34,12 +34,16 @@ class _HomeState extends State<Home> {
           if(snapshot.hasData){
             List<dynamic> swiper = json.decode(snapshot.data.toString());
             List<dynamic> navigatory = json.decode(snapshot.data.toString());
-            return Column(
-              children: <Widget>[
-                SwiperMe(swiperList:swiper),
-                TopNavigator(navList: navigatory),
-                Dophone()
-              ],
+            return 
+            SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  SwiperMe(swiperList:swiper),
+                  TopNavigator(navList: navigatory),
+                  Recommend(recommendList:navigatory)
+                  // Dophone()
+                ],
+              )
             );
           }else{
             return Center(
@@ -119,11 +123,88 @@ class Dophone extends StatelessWidget {
   }
 
   void _launchURL() async {
-    String url = 'tel:'+'13148385296';
+    String url = 'tel:'+'13148385296'; //打电话需要连真机
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
+  }
+}
+
+class Recommend extends StatelessWidget {
+  final List recommendList;
+  Recommend({this.recommendList});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: ScreenUtil().setHeight(380),
+      margin: EdgeInsets.only(top: 10.0),
+      child: Column(
+        children: <Widget>[
+          _titleRecommend(),
+          _listRecommend()
+        ],
+      ),
+    );
+  }
+
+  Widget _titleRecommend(){
+    return Container(
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.fromLTRB(10.0, 2.0, 0, 5.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          bottom: BorderSide(width: 0.5,color:Colors.black12)
+        )
+      ),
+      child: Text(
+        '商品推荐',
+        style: TextStyle(color: Colors.pink)
+      ),
+    );
+  }
+
+  Widget _listRecommend(){
+    return Container(
+      height: ScreenUtil().setHeight(330),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: recommendList.length,
+        itemBuilder: (context,index){
+          return _item(index);
+      }),
+    );
+  }
+
+  Widget _item(index){
+    return InkWell(
+      onTap: (){},
+      child: Container(
+        height: ScreenUtil().setHeight(330),
+        width: ScreenUtil().setWidth(250),
+        padding: EdgeInsets.all(9.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border(
+            bottom: BorderSide(width: 0.5,color:Colors.black12)
+          )
+        ),
+        child: Column(
+          children: <Widget>[
+            Image.network(recommendList[index]['image']),
+            Text('￥${recommendList[index]['price']}'),
+            Text(
+              '￥${recommendList[index]['price']}',
+              style: TextStyle(
+                decoration: TextDecoration.lineThrough,
+                color: Colors.grey
+              ),
+            )
+          ]
+        ),
+      ),
+    );
   }
 }
