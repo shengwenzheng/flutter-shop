@@ -10,7 +10,10 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   String homeContent = '正在获取数据...';
   @override
   void initState() { 
@@ -20,7 +23,7 @@ class _HomeState extends State<Home> {
       });
     });
     super.initState();
-    
+    print('重新加载了.....');
   }
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +37,18 @@ class _HomeState extends State<Home> {
           if(snapshot.hasData){
             List<dynamic> swiper = json.decode(snapshot.data.toString());
             List<dynamic> navigatory = json.decode(snapshot.data.toString());
+            var floor1Title = '第一层楼';
             return 
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   SwiperMe(swiperList:swiper),
                   TopNavigator(navList: navigatory),
-                  Recommend(recommendList:navigatory)
+                  Recommend(recommendList:navigatory),
+                  Recommend(recommendList:navigatory),
+                  Recommend(recommendList:navigatory),
+                  FloorTitle(imgAddress:floor1Title),
+                  FloorShow(floorGoodsList: navigatory,)
                   // Dophone()
                 ],
               )
@@ -188,7 +196,7 @@ class Recommend extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border(
-            bottom: BorderSide(width: 0.5,color:Colors.black12)
+            bottom: BorderSide(width: 1,color:Colors.black12)
           )
         ),
         child: Column(
@@ -204,6 +212,74 @@ class Recommend extends StatelessWidget {
             )
           ]
         ),
+      ),
+    );
+  }
+}
+
+//楼层标题
+class FloorTitle extends StatelessWidget {
+  final String imgAddress;
+  FloorTitle({this.imgAddress});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      child: Text(imgAddress),
+    );
+  }
+}
+
+//楼层商品组件
+class FloorShow extends StatelessWidget {
+  final List floorGoodsList;
+  FloorShow({this.floorGoodsList});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          _firstRow(),
+          _secondRow()
+        ]
+      ),
+    );
+  }
+
+  Widget _firstRow(){
+    return Row(
+      children: <Widget>[
+        _goodsItem(floorGoodsList[0]),
+        Column(
+          children: <Widget>[
+            _goodsItem(floorGoodsList[1]),
+            _goodsItem(floorGoodsList[2])
+          ]
+        )
+      ]
+    );
+  }
+
+  Widget _secondRow(){
+    return Row(
+      children: <Widget>[
+        _goodsItem(floorGoodsList[3]),
+        _goodsItem(floorGoodsList[4]),
+      ]
+    );
+  }
+
+  Widget _goodsItem(Map good){
+    return Container(
+      width: ScreenUtil().setWidth(375),
+      child: InkWell(
+        onTap:(){},
+        child: Column(
+          children:<Widget>[
+            Image.network(good['image']),
+            Text(good['title'])
+          ]
+        )
       ),
     );
   }
