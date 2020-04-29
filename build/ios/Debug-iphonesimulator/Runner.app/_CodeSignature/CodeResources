@@ -130,7 +130,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		xnxQYbXLmhCDsVYsJGzoY+2dxcU=
+		VZdiy/8e1hJQCoo9nywaJyJbM6E=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -138,19 +138,23 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		SIiusEIKqJwkvumi53RBFzDc9xg=
+		6oR08suypcmUPwIs1WbQS/d86FE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		Rf70NdLh6UQqBeHLAGs0r41rbeM=
+		Ea9ZFBPsgFBezoSIw/rhTG5/zH4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
-		lILml1/Dm8FIsisqu4EM3Kg929Q=
+		2xire6zqqlmlCDphvOJyfevaiZU=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/LICENSE</key>
 		<data>
-		Yv/doQo1Xn3ZHtYKF1haVtZPi1I=
+		TiJu3Myk5iiNZ3TErvULj7QGuPg=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/hotGoods.json</key>
+		<data>
+		M6zO8wlkLcBhMxwqjp6vu5REEaw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/person.json</key>
 		<data>
@@ -166,7 +170,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		DszylVa23HG2pxVsj34lfMuyAHk=
+		xVdMCzl6VXwuVE99S8YldVUcQWY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -230,7 +234,7 @@
 		</data>
 		<key>Frameworks/url_launcher.framework/url_launcher</key>
 		<data>
-		s72bHuQYdkwL0Q06GaX2dsHmN3I=
+		4BEH8iQjWsW47LiWo72aMB07vHk=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -588,11 +592,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xnxQYbXLmhCDsVYsJGzoY+2dxcU=
+			VZdiy/8e1hJQCoo9nywaJyJbM6E=
 			</data>
 			<key>hash2</key>
 			<data>
-			FNKWYaYYBQitF0ZNJwp0pgWkO75UN+VeTR0E1NKzzQE=
+			kb4HfSdvPtq8EB0vuuZVg4ZPtbXB/U6LLSd0OgNciqQ=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -610,44 +614,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SIiusEIKqJwkvumi53RBFzDc9xg=
+			6oR08suypcmUPwIs1WbQS/d86FE=
 			</data>
 			<key>hash2</key>
 			<data>
-			c5/0CxlajrIoUx+xOqp2AlYsbmajxoC12TU5U7jsBLw=
+			FyXYVmxv+CLXNGSRHAo6/RyR+VGyRRtRooG0pYakFgY=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Rf70NdLh6UQqBeHLAGs0r41rbeM=
+			Ea9ZFBPsgFBezoSIw/rhTG5/zH4=
 			</data>
 			<key>hash2</key>
 			<data>
-			4su2TRFI5glKw/OyjLq6pbM3Q2kXl+E1d9zUPJyOmQE=
+			1v6XfoM8xGEkdA2UvpWZRstUWUTtqvMmmb6gG8hRZvs=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lILml1/Dm8FIsisqu4EM3Kg929Q=
+			2xire6zqqlmlCDphvOJyfevaiZU=
 			</data>
 			<key>hash2</key>
 			<data>
-			YwkPE2N7k/su9XjVFpdeoUy7GFY9DEY+G4h3aEyC1dg=
+			3J4+QvAv5f/BIWLzq88sAzPdKmnf7Rr5KGwJZnBBCGc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/LICENSE</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Yv/doQo1Xn3ZHtYKF1haVtZPi1I=
+			TiJu3Myk5iiNZ3TErvULj7QGuPg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Hasa1mqDBulLNAtAJGYoHah6+FdlF7M2S1LmtRHUk6s=
+			HVicDcoIrlDM9NF3VXzdDd7wXDaJImZpMTsVBKN3Spo=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/hotGoods.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			M6zO8wlkLcBhMxwqjp6vu5REEaw=
+			</data>
+			<key>hash2</key>
+			<data>
+			8O31jQuWUnBYgYwulydlqQrqHpBKEpYT5l8inpEUDNg=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/person.json</key>
@@ -687,11 +702,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DszylVa23HG2pxVsj34lfMuyAHk=
+			xVdMCzl6VXwuVE99S8YldVUcQWY=
 			</data>
 			<key>hash2</key>
 			<data>
-			wIkE4UzugIntsLiH1L6UNHRCMl2OCfvTBfQA3Z1nWGc=
+			CwPjfq6ZIdn7RtfIbKstqIya30T0n9wk38cgBJjGb4A=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -863,11 +878,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s72bHuQYdkwL0Q06GaX2dsHmN3I=
+			4BEH8iQjWsW47LiWo72aMB07vHk=
 			</data>
 			<key>hash2</key>
 			<data>
-			JT/UmUXmGtbRs7lysHP/2E0uFiAeUV3iesoHHUvXTjU=
+			pkXqECcQkWDG6EcFIBBoMJt6TiSDCZJBXS/B5xr9BD4=
 			</data>
 		</dict>
 	</dict>

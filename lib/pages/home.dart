@@ -4,6 +4,7 @@ import 'dart:convert';
 import '../service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,6 +12,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin {
+  int page = 1;
+  List<Map> hotGoodsList = [];
   @override
   bool get wantKeepAlive => true;
 
@@ -22,6 +25,7 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin {
         homeContent = val.toString();
       });
     });
+    // _getHotGoods();
     super.initState();
     print('重新加载了.....');
   }
@@ -38,9 +42,8 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin {
             List<dynamic> swiper = json.decode(snapshot.data.toString());
             List<dynamic> navigatory = json.decode(snapshot.data.toString());
             var floor1Title = '第一层楼';
-            return 
-            SingleChildScrollView(
-              child: Column(
+            return EasyRefresh(
+              child:ListView(
                 children: <Widget>[
                   SwiperMe(swiperList:swiper),
                   TopNavigator(navList: navigatory),
@@ -48,11 +51,17 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin {
                   Recommend(recommendList:navigatory),
                   Recommend(recommendList:navigatory),
                   FloorTitle(imgAddress:floor1Title),
-                  FloorShow(floorGoodsList: navigatory,)
+                  FloorShow(floorGoodsList: navigatory),
+                  hotGoods()
                   // Dophone()
                 ],
-              )
+              ),
+              onLoad: ()async{
+                print('加载更多....');
+                _getHotGoods();
+              },
             );
+
           }else{
             return Center(
               child: Text('加载中'),
@@ -60,6 +69,83 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin {
           }
         }
       )
+    );
+  }
+
+  void _getHotGoods(){
+    getHotGoods().then((val){
+      List<Map> newGoodsList = (val as List).cast();
+      setState(() {
+        hotGoodsList.addAll(newGoodsList);
+      });
+    });
+  }
+
+  Widget hotTitle = Container(
+    margin: EdgeInsets.only(top: 10.0),
+    padding: EdgeInsets.all(5.0),
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border(
+        bottom: BorderSide(
+          width: 0.5,
+          color: Colors.black12
+        )
+      )
+    ),
+    child: Text('火爆专区'),
+  );
+
+  Widget wrapList(){
+    if(hotGoodsList.length > 0){
+      List<Widget> listWidget = hotGoodsList.map((val){
+        return InkWell(
+          onTap: (){},
+          child: Container(
+            width: ScreenUtil().setWidth(372),
+            color: Colors.white,
+            padding: EdgeInsets.all(5.0),
+            margin: EdgeInsets.only(bottom: 5.0),
+            child: Column(
+              children: <Widget>[
+                Image.network(val['img'],width: ScreenUtil().setWidth(375),),
+                Text(
+                  val['time'],
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: ScreenUtil().setSp(26)
+                  )
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(val['time'])
+                  ]
+                )
+              ]
+            )
+          ),
+        );
+      }).toList();
+      return Wrap(
+        spacing: 2,
+        children: listWidget,
+      );
+    }else{
+      return Text(' ');
+    }
+  }
+
+  Widget hotGoods(){
+    return Container(
+      child: Column(
+        children: <Widget>[
+          hotTitle,
+          wrapList()
+        ]
+      ),
     );
   }
 }
@@ -281,6 +367,21 @@ class FloorShow extends StatelessWidget {
           ]
         )
       ),
+    );
+  }
+}
+
+//火爆专区
+class HotGoods extends StatefulWidget {
+  @override
+  _HotGoodsState createState() => _HotGoodsState();
+}
+
+class _HotGoodsState extends State<HotGoods> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
     );
   }
 }
