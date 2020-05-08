@@ -42,9 +42,9 @@ Future getCategory() async {
     print('分类数据。。。');
     Response response;
     Dio dio = new Dio();
-    response = await dio.get(servicePath['videoCategory']);
+    response = await dio.get(servicePath['musicRankings']);
     if(response.statusCode == 200){
-      return response.data['result'];
+      return response.data['result'];;
     }else{
       throw Exception('后端接口出现异常，请检测代码和服务器情况.........');
     }
