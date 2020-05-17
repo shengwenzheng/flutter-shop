@@ -5,6 +5,7 @@ import '../model/catetory.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../service.dart';
 import '../provide/child_category.dart';
+import './../router/app.dart';
 
 class Category extends StatelessWidget {
   @override
@@ -121,7 +122,8 @@ class _RightNavState extends State<RightNav> {
 
   Widget _rightInkwell(item){
     return InkWell(
-      onTap:(){},
+      onTap:(){
+      },
       child: Container(
         padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 10.0),
         child: Text(
@@ -193,7 +195,9 @@ class _SongCategoryListState extends State<SongCategoryList> {
 
   Widget _listSong(List list,int index){
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        App.router.navigateTo(context, "/detail?id=${list[index]['song_id']}");
+      },
       child: Container(
         padding: EdgeInsets.only(top: 5.0,bottom: 5.0),
         decoration: BoxDecoration(

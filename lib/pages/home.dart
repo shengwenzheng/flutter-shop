@@ -5,6 +5,7 @@ import '../service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import './../router/app.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -177,7 +178,9 @@ class TopNavigator extends StatelessWidget {
   TopNavigator({this.navList});
   Widget _gridViewItem(BuildContext context,item) {
     return InkWell(
-      onTap: (){print('点击我了');},
+      onTap: (){
+        App.router.navigateTo(context, "/detail?id=123");
+      },
       child: Column(
         children: <Widget>[
           Image.network(

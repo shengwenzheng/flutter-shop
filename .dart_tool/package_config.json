@@ -62,6 +62,12 @@
       "languageVersion": "2.4"
     },
     {
+      "name": "fluro",
+      "rootUri": "file:///Users/shengwenzheng/app/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluro-1.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///Users/shengwenzheng/app/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -260,7 +266,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-05-05T15:08:25.111930Z",
+  "generated": "2020-05-14T14:23:14.093351Z",
   "generator": "pub",
-  "generatorVersion": "2.7.2"
+  "generatorVersion": "2.7.0"
 }
