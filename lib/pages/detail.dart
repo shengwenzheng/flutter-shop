@@ -3,6 +3,8 @@ import 'package:provide/provide.dart';
 import '../provide/detail.dart';
 import './detail/detail_top.dart';
 import './detail/detail_tabbar.dart';
+import './detail/detail_web.dart';
+import './detail/detail_bottom.dart';
 
 class Detail extends StatelessWidget {
   final String goodsId;
@@ -22,13 +24,21 @@ class Detail extends StatelessWidget {
         future: _getDetail(context),
         builder: (context,snapshot){
           if(snapshot.hasData){
-            return Container(
-              child: ListView(
-                children: <Widget>[
-                  DetailTop(),
-                  DetailTabBar()
-                ]
-              ),
+            return Stack(
+              children: <Widget>[
+                ListView(
+                  children: <Widget>[
+                    DetailTop(),
+                    DetailTabBar(),
+                    DetailWeb()
+                  ]
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: DetailBottom()
+                )
+              ],
             );
           }else{
             return Text('加载中');

@@ -5,6 +5,7 @@ class Detail {
   String payPrice;
   String oriPrice;
   String mark;
+  String detailHTML;
 
   Detail(
       {this.id,
@@ -12,7 +13,8 @@ class Detail {
       this.title,
       this.payPrice,
       this.oriPrice,
-      this.mark});
+      this.mark,
+      this.detailHTML});
 
   Detail.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -21,6 +23,7 @@ class Detail {
     payPrice = json['payPrice'];
     oriPrice = json['oriPrice'];
     mark = json['mark'];
+    detailHTML = json['detailHTML'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,6 +34,7 @@ class Detail {
     data['payPrice'] = this.payPrice;
     data['oriPrice'] = this.oriPrice;
     data['mark'] = this.mark;
+    data['detailHTML'] = this.detailHTML;
     return data;
   }
 }

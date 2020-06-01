@@ -5,6 +5,7 @@ import 'package:provide/provide.dart';
 import './provide/counter.dart';
 import './provide/child_category.dart';
 import './provide/detail.dart';
+import './provide/cart.dart';
 import 'package:fluro/fluro.dart';
 import './router/routers.dart';
 import './router/app.dart';
@@ -14,10 +15,12 @@ void main(){
   var childCategory = ChildCategory();
   var detailPrivide = DetailPrivide();
   var providers = Providers();
+  var cartProvide = CartProvide();
   providers
   ..provide(Provider<Counter>.value(counter))
   ..provide(Provider<ChildCategory>.value(childCategory))
-  ..provide(Provider<DetailPrivide>.value(detailPrivide));
+  ..provide(Provider<DetailPrivide>.value(detailPrivide))
+  ..provide(Provider<CartProvide>.value(cartProvide));
   runApp(ProviderNode(child:MyApp(),providers:providers));
 }
 

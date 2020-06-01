@@ -1,49 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:my_shop/service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provide/provide.dart';
-import '../provide/counter.dart';
+import '../provide/cart.dart';
+import './cart/cart_item.dart';
+import './cart/cart_bottom.dart';
 
 class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children:<Widget>[
-            Number(),
-            Button()
-          ]
-        )
+      appBar: AppBar(
+        title: Text('购物车')
+      ),
+      body: FutureBuilder(
+        future: _getCartData(context),
+        builder: (context,snapshot){
+          List cartList = Provide.value<CartProvide>(context).cartList;
+          print(cartList);
+          if(snapshot.hasData){
+            return Stack(
+              children: <Widget>[
+                ListView.builder(
+                  itemCount: cartList.length,
+                  itemBuilder: (context,index){
+                    return CartItem(cartList[index]);
+                  }
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: CartBottom()
+                )
+              ],
+            );
+            
+          }else{
+            Text('正在加载。。。');
+          }
+        }
       ),
     );
   }
-}
 
-class Number extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 200.0),
-      child: Provide<Counter>(
-        builder: (context,child,counter){
-          return Text(
-            '${counter.value}',
-             style: Theme.of(context).textTheme.display1,
-          );
-        }
-      )
-    );
-  }
-}
-
-class Button extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: RaisedButton(
-        child: Text('递增'),
-        onPressed: (){
-          Provide.value<Counter>(context).increment();
-        })
-    );
+  Future<String> _getCartData(BuildContext context) async{
+    await Provide.value<CartProvide>(context).getCartData();
+    return 'end';
   }
 }
